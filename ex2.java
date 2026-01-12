@@ -45,3 +45,20 @@ class Main {
         }
     }
 }
+
+//print "Above 18" if age is larger than 18, else print "Below or equal 18".
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int age = scanner.nextInt();
+        if(age>18){
+            System.out.println("Above 18");
+        }
+        else{
+            System.out.println("Below or equal 18");
+        }
+    }
+}
+
