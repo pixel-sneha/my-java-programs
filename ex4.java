@@ -24,3 +24,39 @@ class Main {
         }
     }
 }
+
+//Write a program that gets input from the user, an integer, let's call it num,
+// the program prints the sum of all the numbers from 1 to num * 3.
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int sum = 0;
+        int size = num*3;
+        for(int i = 1;i<=size;i++){
+            sum += i;
+        }
+        System.out.println(sum);
+    }
+}
+
+//Write a program that gets two integers from the user - base and power (in this order),
+// calculates the exponentiation and prints it.
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int base = sc.nextInt();
+        int pow = sc.nextInt();
+        int n = pow,i = 1,ans = 1;
+        while(i<=n){
+            ans *= base;
+            i++;
+        }
+        System.out.println(ans);
+    }
+}
