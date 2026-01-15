@@ -51,3 +51,32 @@ class Main {
         }
     }
 }
+
+
+//Write a program that gets one input, a number. The input number indicates how many times to execute the below method. 
+//Also create a method that calculates the sum of all of the numbers between 1 and 1000 (including) and prints it
+
+import java.util.Scanner;
+
+public class Main {
+    // Method declaration
+    public static void sumNumbers() {
+        // Complete Method
+        int sum = 0;
+        for(int i = 1;i<1001;i++){
+            sum += i;
+        }
+        System.out.println(sum);
+    }
+    
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            // Calling method
+            sumNumbers();
+        }
+        scanner.close();
+    }
+}
