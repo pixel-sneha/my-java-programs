@@ -88,20 +88,29 @@ The method will return True if the username and password are valid in the system
 Our system contains only two valid usernames - "admin" and "user".
 The valid password for username "user" is "qweasd".
 For username "admin" any password is valid! */
+/*Write a method named is_valid that gets two strings arguments, username and password.
+
+The method will return True if the username and password are valid in the system, otherwise False.
+
+Our system contains only two valid usernames - "admin" and "user".
+
+The valid password for username "user" is "qweasd".
+
+For username "admin" any password is valid! */
 import java.util.Scanner;
 
 public class Main {
     public static boolean is_valid(String username, String password) {
-        if(username=="admin" || username=="user"){
-            if(username=="user" && password=="qweasd"){
-                return true;
-            }
+    switch (username) {
+        case "admin":
             return true;
-        }
-        else{
+        case "user":
+            return password.equals("qweasd");
+        default:
             return false;
-        }
     }
+}
+
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
