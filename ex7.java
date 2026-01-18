@@ -40,3 +40,34 @@ public class Main {
         }
     }
 }
+
+/*Create a method named merge that receives two arrays as arguments.
+The method merges the two arrays into one sorted array and returns it.*/
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    public static String[] merge(String[] arr1, String[] arr2) {
+        Arrays.sort(arr1);
+        int size1 = arr1.length;
+        int size2 = arr2.length;
+        int size = size1 + size2;
+        String result[] = new String[size];
+        System.arraycopy(arr1, 0, result, 0, size1);
+        System.arraycopy(arr2, 0, result, size1, size2);
+        Arrays.sort(result);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String textArr1 = scanner.nextLine();
+        String textArr2 = scanner.nextLine();
+        String[] arr1 = textArr1.split(",");
+        String[] arr2 = textArr2.split(",");
+
+        String[] mergedArray = merge(arr1, arr2);
+        System.out.println(Arrays.toString(mergedArray));
+    }
+}
+
