@@ -93,3 +93,38 @@ public class Main {
         System.out.println("Minimum: " + stats[3]);
     }
 }
+
+/*reate a method named analyzeString that takes a string as input and prints the following analysis using string methods:
+
+The length of the string
+The character at index 4
+The substring starting from index 7 to the end
+The substring from index 3 up to, but not including, index 6
+Whether the string ends with a dot .
+The string converted to uppercase*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void analyzeString(String str) {
+        int length = str.length();
+        char char4 = str.charAt(4);
+        String sub = str.substring(7, length);
+        String sub1 = str.substring(3,6);
+        boolean ends = str.endsWith(".");
+        String up = str.toUpperCase();
+
+        System.out.println("Length: " + length);
+        System.out.println("Char at 4: " + char4);
+        System.out.println("Substring: " + sub);
+        System.out.println("Substring 2: " + sub1);
+        System.out.println("Ends with dot: " + ends);
+        System.out.println("Uppercase: " + up);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String message = scanner.nextLine();
+        analyzeString(message);
+    }
+}
