@@ -20,7 +20,6 @@ A string productName.
 An integer quantity.
 A double unitPrice.
 The method should return a formatted string that combines these values*/
-
 import java.util.Scanner;
 public class Main {
     public static String createFormattedString(String productName, int quantity, double unitPrice) {
@@ -28,7 +27,6 @@ public class Main {
         String formatted = String.format("Product: %s, Quantity: %.1f, Unit Price: %.5f",productName,quantityAsDouble,unitPrice);
         return formatted;
     }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String product = scanner.nextLine();
@@ -70,7 +68,6 @@ public class Main {
 
 /*Each test case has one input - an odd whole number.
 Your task is to print n - pyramid using **/
-
 import java.util.Scanner;
 
 public class Main {
