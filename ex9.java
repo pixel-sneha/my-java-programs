@@ -81,3 +81,33 @@ public class Main {
         }
     }
 }
+
+
+/*Create a method named calculateAverageGrade that takes an array of integers 
+(representing student grades) as input and returns the average grade as a double*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static double calculateAverageGrade(int[] grades) {
+        int total = 0;
+        double n = grades.length;
+        for(int i=0;i< grades.length;i++){
+            total += grades[i];
+        }
+        double avg = (double) total / n;
+        return avg;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        String[] stringArr = text.split(",");
+        int[] studentGrades = new int[stringArr.length];
+        for (int i = 0; i < stringArr.length; i++) {
+           studentGrades[i] = Integer.parseInt(stringArr[i]);
+        }
+        double averageGrade = calculateAverageGrade(studentGrades);
+        System.out.printf("Average grade: %.2f", averageGrade);
+    }
+}
