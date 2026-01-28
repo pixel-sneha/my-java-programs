@@ -19,3 +19,26 @@ public class Main {
         }
     }
 }
+
+/*Create a method named getElement that takes three arguments:
+A 2D array of integers named matrix.
+An integer rowIndex representing the row index.
+An integer colIndex representing the column index.
+The method should return the element at the specified row and 
+column in the matrix. If the rowIndex or colIndex is out of bounds, the method should return -1. */
+
+class GetElement {
+    public static int getElement(int[][] matrix, int rowIndex, int colIndex) {
+        if(rowIndex<0 || rowIndex>=matrix.length || colIndex<0 || colIndex>=matrix.length){
+            return -1;
+        }
+        for(int i=0;i< matrix.length;i++){
+            for(int j = 0;j<matrix.length;j++){
+                if(matrix[i][j]==matrix[rowIndex][colIndex]){
+                    return matrix[rowIndex][colIndex];
+                }
+            }
+        }
+        return matrix[rowIndex][colIndex];
+    }
+}
