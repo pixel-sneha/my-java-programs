@@ -42,3 +42,19 @@ class GetElement {
         return matrix[rowIndex][colIndex];
     }
 }
+
+/*Create a method named printMatrix that takes a 2D array of integers as an 
+argument and prints its elements in a matrix format. 
+Use nested loops to iterate over the rows and columns of the array.*/
+
+class PrintMatrix {
+    public static void printMatrix(int[][] matrix) {
+        int i,j;
+        for(i=0;i<matrix.length;i++){
+            for(j=0;j<matrix[i].length;j++){
+                System.out.print(matrix[i][j] +" ");
+            }
+            System.out.println();
+        }
+    }
+}
