@@ -91,3 +91,31 @@ public class Main {
         printSum(array);
     }
 }
+
+/*Create a method named processMatrix that takes a 2D array of integers as an argument and performs the following operations:
+
+Find the sum of all elements in the matrix.
+Find the maximum element in the matrix.
+Count the number of even elements in the matrix.*/
+class ProcessMatrix {
+    public static int[] processMatrix(int[][] matrix) {
+        int processed[];
+        processed = new int[3];
+        int sum = 0, max = matrix[0][0], evenCount = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
+                if(matrix[i][j]>=max){
+                    max = matrix[i][j];
+                }
+                if((matrix[i][j])%2==0){
+                    evenCount++;
+                }
+            }
+        }
+        processed[0] = sum;
+        processed[1] = max;
+        processed[2] = evenCount;
+        return processed;
+    }
+}
