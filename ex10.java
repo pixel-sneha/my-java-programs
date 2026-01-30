@@ -58,3 +58,36 @@ class PrintMatrix {
         }
     }
 }
+
+/*Create a method named printSum that takes a 2D array of integers as an argument. 
+The method should: Calculate and print the sum of each row,
+Print the sums "Row X sum: Y" (where X is the row index and Y is the sum)*/
+
+import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+public class Main {
+    public static void printSum(int[][] array) {
+        int sum = 0;
+        for (int row = 0; row < array.length; row++) {
+            for (int col = 0; col < array[row].length; col++) {
+                sum += array[row][col];
+                }
+        System.out.print("Row " + row + " sum: " +sum);
+        sum = 0;
+        System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String arrayString = scanner.nextLine();
+        
+        Type arrayType = new TypeToken<int[][]>(){}.getType();
+        int[][] array = new Gson().fromJson(arrayString, arrayType);
+        
+        printSum(array);
+    }
+}
