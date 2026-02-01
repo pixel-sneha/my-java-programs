@@ -33,3 +33,25 @@ class MatrixOperation {
         return result;
     }
 }
+
+/*Create a method named createJaggedArray that takes an integer n as input returns a jagged array of integers. The jagged array should have the following structure:
+The first row should have 1 element.
+The second row should have 2 elements.
+The third row should have 3 elements.
+And so on, up to the n row, which should have n elements.
+Initialize each element of the array with the product of its row and column indices (starting from 1). For example, the element at the second row and first column should have the value 2 * 1 = 2.*/
+
+class CreateJaggedArray {
+    public static int[][] createJaggedArray(int n) {
+        int[][] jaggedArray = new int[n][];
+
+        for (int i = 0; i < jaggedArray.length; i++) {
+            jaggedArray[i] = new int[i + 1];
+            for (int j = 0; j < jaggedArray[i].length; j++) {
+                jaggedArray[i][j] = (i + 1) * (j + 1);
+            }
+        }
+
+        return jaggedArray;
+    }
+}
