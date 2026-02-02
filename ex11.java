@@ -55,3 +55,38 @@ class CreateJaggedArray {
         return jaggedArray;
     }
 }
+
+/*Write a program that gets that takes three integer arguments: depth, rows, and cols.
+It should create a 3D array of integers with the specified dimensions and Initialize each element of the array with the product of its depth, row, and column indices (starting from 1).*/
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int depth = scanner.nextInt();
+        int rows = scanner.nextInt();
+        int cols = scanner.nextInt();
+
+        int[][][] array3D = new int[depth][rows][cols];
+         for (int d = 0; d < depth; d++) {
+            for (int r = 0; r < rows; r++) {
+                for (int c = 0; c < cols; c++) {
+                array3D[d][r][c] = (d + 1) * (r + 1) * (c + 1);
+                }
+            }
+        }
+
+        for (int d = 0; d < depth; d++) {
+            System.out.println("Depth " + d + ":");
+            for (int r = 0; r < rows; r++) {
+                for (int c = 0; c < cols; c++) {
+                    System.out.print(array3D[d][r][c] + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+}
