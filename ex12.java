@@ -44,3 +44,33 @@ class PrintPatterns {
         System.out.println();
     }
 }
+
+/*Create a method named arrayOperations that takes a 2D array of integers (matrix) as input and performs the following operations:
+
+Calculate the sum of all elements in the matrix.
+Find the maximum element in the matrix.
+Create a new 1D array that contains the sums of each row in the matrix.*/
+import java.util.Arrays;
+class ArrayOperations {
+    public static void arrayOperations(int[][] matrix) {
+        int sum = 0, max = matrix[0][0];
+        int calSum = 0;
+        int rowSums[];
+        rowSums = new int[matrix.length];
+        for(int i=0;i< matrix.length;i++){
+            for(int j=0; j<matrix[i].length;j++){
+                sum += matrix[i][j];
+                calSum += matrix[i][j];
+                if(matrix[i][j]>=max){
+                    max = matrix[i][j];
+                }
+            }
+            rowSums[i] = calSum;
+            calSum = 0;
+        }
+        System.out.println("Sum: " + sum);
+        System.out.println("Maximum: " + max);
+        System.out.println("Row Sums: " + Arrays.toString(rowSums));
+
+    }
+}
