@@ -32,7 +32,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Scanner;
-
 public class Main {
     public static String getCapital(HashMap<String, String> capitals, String country) {
         //HashMap<String,String> capitals = new HashMap<>();
@@ -47,11 +46,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String hashMapString = scanner.nextLine();
         String country = scanner.nextLine();
-
         // Converting String of HashMap to HashMap
         Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
         HashMap<String, String> countryCapitals = new Gson().fromJson(hashMapString, mapType);
-
         String result = getCapital(countryCapitals, country);
         System.out.println(result);
     }
@@ -84,14 +81,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String hashMapString = scanner.nextLine();
         String arrayString = scanner.nextLine();
-
         // Convert String of HashMap to HashMap
         Type mapType = new TypeToken<HashMap<String, Integer>>(){}.getType();
         HashMap<String, Integer> randomValues = new Gson().fromJson(hashMapString, mapType);
 
         // Convert String of Array to Array
         String[] keys = new Gson().fromJson(arrayString, String[].class);
-
         int result = keyChecker(randomValues, keys);
         System.out.println(result);
     }
