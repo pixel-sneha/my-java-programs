@@ -56,3 +56,44 @@ public class Main {
         System.out.println(result);
     }
 }
+
+/*Create a method named keyChecker that takes two arguments:
+
+A HashMap named randomValues where keys are random strings and values are random values.
+An array keys representing string keys.
+The method should return the number of keys from the array that exist in the HashMap*/
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+    public static int keyChecker(HashMap<String, Integer> randomValues, String[] keys) {
+        int containedKey = 0;
+        for(int i=0;i< keys.length;i++){
+            boolean keyCheck = randomValues.containsKey(keys[i]);
+            if(keyCheck){
+                containedKey++;
+            } 
+        }
+        return containedKey;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String hashMapString = scanner.nextLine();
+        String arrayString = scanner.nextLine();
+
+        // Convert String of HashMap to HashMap
+        Type mapType = new TypeToken<HashMap<String, Integer>>(){}.getType();
+        HashMap<String, Integer> randomValues = new Gson().fromJson(hashMapString, mapType);
+
+        // Convert String of Array to Array
+        String[] keys = new Gson().fromJson(arrayString, String[].class);
+
+        int result = keyChecker(randomValues, keys);
+        System.out.println(result);
+    }
+}
+
