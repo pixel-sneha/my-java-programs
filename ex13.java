@@ -144,13 +144,10 @@ public class Main {
 
 /*Create a method named processHashMap that takes a HashMap<String, Integer> and an array of String operations, then performs the following actions
 and after processing all operations, the method should return the modified HashMap. The main method will print it in JSON format.*/
-
-
 // --- Modules to convert string of hashmap to hashmap ---
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-// -----------------------------
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -170,7 +167,6 @@ public class Main {
             } else if (parts[0].equals("MODIFY")) {
                 String key = parts[1];
                 Integer targetValue = Integer.parseInt(parts[2]);
-                
                 if (data.containsKey(key)) {
                     if (data.get(key).equals(targetValue)) {
                         data.replace(key, targetValue + 1);
@@ -184,7 +180,6 @@ public class Main {
         }
         return data;
     }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String hashMapString = scanner.nextLine();
