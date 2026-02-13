@@ -84,3 +84,45 @@ public class Main {
         printInventoryEntrySet(inventory);
     }
 }
+
+
+/*Create a method named printNestedInventory that takes a nested HashMap called inventory as input. In this inventory:
+
+Keys are categories (e.g., "Electronics", "Furniture").
+Values are inner HashMaps where keys are product names and values are their prices.*/
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Map;
+
+public class Main {
+    public static void printNestedInventory(HashMap<String, HashMap<String, Integer>> inventory) {
+        // Iterate over each category in the outer HashMap.
+        for (String category : inventory.keySet()) {
+            System.out.println("Category: " + category);
+            HashMap<String, Integer> items = inventory.get(category);
+            // Check if the inner map is empty.
+            if (items.isEmpty()) {
+                System.out.println("  (No products)");
+            } else {
+                // Iterate over each product in the inner HashMap using keySet().
+                for (String product : items.keySet()) {
+                    System.out.println("  Product: " + product + ", Price: " + items.get(product));
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inventoryString = scanner.nextLine();
+        // Convert JSON string to Nested HashMap
+        Type inventoryType = new TypeToken<HashMap<String, HashMap<String, Integer>>>(){}.getType();
+        HashMap<String, HashMap<String, Integer>> inventory = new Gson().fromJson(inventoryString, inventoryType);
+
+        printNestedInventory(inventory);
+    }
+}
