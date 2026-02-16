@@ -90,7 +90,6 @@ public class Main {
 
 Keys are categories (e.g., "Electronics", "Furniture").
 Values are inner HashMaps where keys are product names and values are their prices.*/
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -104,7 +103,6 @@ public class Main {
         for (String category : inventory.keySet()) {
             System.out.println("Category: " + category);
             HashMap<String, Integer> items = inventory.get(category);
-            // Check if the inner map is empty.
             if (items.isEmpty()) {
                 System.out.println("  (No products)");
             } else {
@@ -184,7 +182,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String warehouseString = scanner.nextLine();
         String operationsString = scanner.nextLine();
-
         // Convert JSON string to HashMap
         Type mapType = new TypeToken<HashMap<String, Integer>>(){}.getType();
         HashMap<String, Integer> warehouse = new Gson().fromJson(warehouseString, mapType);
