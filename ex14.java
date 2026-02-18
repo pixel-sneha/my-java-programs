@@ -190,3 +190,90 @@ public class Main {
         manageWarehouse(warehouse, operations);
     }
 }
+
+import java.util.LinkedHashMap;
+import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import com.google.gson.Gson;
+/*Create a method named processHashMap that takes one argument:
+A HashMap named products where:
+Keys represent product names (String),Values represent prices (Double).
+
+Find the product with the highest price.
+If multiple products have the same highest price, return any one of them.
+If the HashMap is empty, return an empty string ("").
+Filter products that have a price greater than 50.00 and store them in a new HashMap.
+Calculate the average price of all products.
+If the HashMap is empty, the average should be 0.0*/
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+public class Main {
+    public static HashMap<String, Object> processHashMap(HashMap<String, Double> products) {
+        String highestProduct = "";
+        double highestPrice = 0.00;
+        HashMap<String, Double> filteredProducts = new HashMap<>();
+        double totalPrice = 0.0;
+
+        if (products.isEmpty()) {
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("Highest", "");
+            result.put("Filtered", filteredProducts);
+            result.put("Average", 0.0);
+            return result;
+        }
+
+        for (Map.Entry<String, Double> entry : products.entrySet()) {
+            String product = entry.getKey();
+            double price = entry.getValue();
+            totalPrice += price;
+
+            if (price > highestPrice) {
+                highestPrice = price;
+                highestProduct = product;
+            }
+
+            if (price > 50.00) {
+                filteredProducts.put(product, price);
+            }
+        }
+
+        double averagePrice = totalPrice / products.size();
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("Highest", highestProduct);
+        result.put("Filtered", filteredProducts);
+        result.put("Average", averagePrice);
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String productsString = scanner.nextLine();
+
+        // Convert JSON string to HashMap
+        Type mapType = new TypeToken<HashMap<String, Double>>(){}.getType();
+        HashMap<String, Double> products = new Gson().fromJson(productsString, mapType);
+
+        HashMap<String, Object> result = processHashMap(products);
+        
+        // Sort the Filtered map to ensure consistent output
+        Map<String, Double> filteredMap = (Map<String, Double>) result.get("Filtered");
+        if (filteredMap != null && !filteredMap.isEmpty()) {
+            Map<String, Double> sortedFiltered = filteredMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (a, b) -> b,
+                    LinkedHashMap::new
+                ));
+            result.put("Filtered", sortedFiltered);
+        }
+        
+        System.out.println(result);
+    }
+}
