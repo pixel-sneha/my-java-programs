@@ -11,6 +11,9 @@ public class Main {
     public static void addElement(HashSet<String> set, String element) {
         set.add(element);
         System.out.println(set);
+        /* similiarly to remove a element */
+        set.remove(element);
+        System.out.println(set);
     }
     
     public static void main(String[] args) {
