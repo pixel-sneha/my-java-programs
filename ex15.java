@@ -1,7 +1,5 @@
 /*Create a method named addElement that takes two arguments:
-
-A HashSet of Strings (set)
-A String (element) to add
+A HashSet of Strings (set), a String (element) to add
 The method should add the given element to the set and then print the updated set.*/
 import java.util.HashSet;
 import java.util.Scanner;
@@ -22,7 +20,6 @@ public class Main {
         
         Type setType = new TypeToken<HashSet<String>>(){}.getType();
         HashSet<String> set = new Gson().fromJson(setString, setType);
-        
         addElement(set, element);
     }
 }
