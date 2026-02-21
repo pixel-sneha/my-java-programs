@@ -1,0 +1,216 @@
+//Object Oriented Programming : Practical 1 
+
+/* Aim: Develop a Java program that prompts the user to enter a distance in meters. Your program should then convert this 
+  distance to feet (1 meter = 3.28084 feet) and display the result formatted to two decimal places. */ 
+
+//Code:
+import java.util.Scanner;
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter distance in meters:");
+    int meters = scanner.nextInt();
+    double feet = (3.28084 * meters);
+    String formattedFeet = String.format("%.2f", feet);
+    System.out.println("Distance in feet: " + formattedFeet);
+  }
+}
+ 
+/* 1.2 Aim: Write a Java program to solve a system of two linear equations with two variables (e.g., ax + by = e and cx + dy = f). 
+Prompt the user to enter the coefficients a, b, c, d, e, f. Calculate and display the values of x and y using Cramer's rule. Include error handling for cases where the denominator is zero. */
+
+//Code:
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--Solving 2 linear equations using Crammer's Rule--");
+        System.out.println("Enter value of a:");
+        double a = scanner.nextDouble();
+        System.out.println("Enter value of b:");
+        double b = scanner.nextDouble();
+        System.out.println("Enter value of c:");
+        double c = scanner.nextDouble();
+        System.out.println("Enter value of d:");
+        double d = scanner.nextDouble();
+        System.out.println("Enter value of e:");
+        double e = scanner.nextDouble();
+        System.out.println("Enter value of f:");
+        double f = scanner.nextDouble();
+        double D = (a*d) - (c*b);
+        if(D==0){
+            System.out.println("Determinant can not be zero, exiting program.");
+            System.exit(1);
+        }
+        else{
+            double Dx = (e*d) - (f*b);
+            double Dy = (a*f) - (c*e);
+            double X = Dx/D;
+            double Y = Dy/D;
+            System.out.println("Value of X = " + X);
+            System.out.println("Value of Y = " + Y);
+        }
+    }
+}
+
+
+/* 1.3 Aim: Write a Java program that prompts the user to enter a single letter (character). Determine whether the entered character is a vowel 
+  (a, e, i, o, u, case-insensitive) or a consonant, and display the result. */
+
+//Code:
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a character:");
+        char word = scanner.next().charAt(0);
+        if(word<='z' && word>='a')
+        {
+            System.out.println("Character is a lowercase alphabet.");
+            if(word=='a' || word=='e' || word=='i' || word=='o' || word=='u')
+            {
+                System.out.println("Character is a vowel.");
+            }
+            else{
+                System.out.println("Character is a consonant.");
+            }
+        }
+        if(word<='Z' && word>='A')
+        {
+            System.out.println("Character is an uppercase alphabet.");
+            if(word=='A' || word=='E' || word=='I' || word=='O' || word=='U')
+            {
+                System.out.println("Character is a vowel.");
+            }
+            else{
+                System.out.println("Character is a consonant.");
+            }
+        }
+      
+    }
+}
+ 
+/* 1.4 Aim: Develop a Java application that calculates a person's Body Mass Index (BMI). The program should ask the user for their weight in pounds and height in inches. 
+  Convert these values to kilograms and meters respectively (1 pound = 0.45359237 kg, 1 inch = 0.0254 meters) and then calculate BMI (weight in kg / (height in meters)^2). Display the calculated BMI */ 
+
+//Code:
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--BMI Calculator--");
+        System.out.println("Enter your weight(in pounds):");
+        double weight = scanner.nextDouble();
+        System.out.println("Enter your height(in inches):");
+        double height = scanner.nextDouble();
+        double weightInKg = weight*0.45359237;
+        System.out.println("Weight kg : "+ weightInKg);
+        double heightInM = height*0.0254;
+        System.out.println("Height meter : "+ heightInM);
+        double heightTotal = Math.pow(heightInM,2);
+        double BMIindex = (weightInKg / (heightTotal));
+        System.out.println("BMI Index : "+ BMIindex);
+    }
+}
+ 
+/* 1.5 Aim: Simulate a simple ATM or cashier. Given an integer amount to be dispensed (e.g., 787), calculate and display the minimum number of currency 
+  notes of denominations 100, 50, 10, 5, 2, and 1 that would be given to the user. */
+
+//Code: 
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--ATM SIMULATOR--");
+        System.out.println("Enter amount to be dispensed:");
+        int money = scanner.nextInt();
+        int hundred,fifty,ten,five,two,ones;
+        hundred = (money%100);
+        fifty = (hundred%50);
+        ten = fifty%10;
+        five = ten%5;
+        two = five%2;
+        ones = two%1;
+        System.out.println("Notes in 100: "+ hundred);
+        System.out.println("Notes in 50: "+ fifty);
+        System.out.println("Notes in 10: "+ ten);
+        System.out.println("Notes in 5: "+ five);
+        System.out.println("Notes in 2: "+ two);
+        System.out.println("Notes in 1: "+ ones);
+    }
+}
+
+
+/* 1.6 Aim: Write a Java program that accepts a five-digit integer from the keyboard. Your program should then create a new number by adding one 
+  to each digit of the input number. For example, if the input is 12391, the output should be 23402 (note: 9+1=10, so it becomes 0 with a carry) */
+
+//Code: 
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a 5 digit integer:");
+        String num = scanner.nextLine();
+        int numInInt[] = new int [num.length()];
+        for (int i=0;i<5;i++){
+            numInInt[i] = num.charAt(i) - '0';
+        }
+        int carry = 0;
+        for(int i=0;i<5;i++){
+            numInInt[i] = numInInt[i]+1+carry;
+            if(numInInt[i]>=10){
+                numInInt[i] = 0;
+                carry = 1;
+            }
+            else{ 
+            carry =0;
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            System.out.print(numInInt[i]);
+        }
+    }
+}
+ 
+
+/* 1.7 Aim: Write a program that takes the lengths of three sides of a triangle as input. Calculate and print the area of the triangle. Ensure that the
+  program validates if the given side lengths can actually form a triangle (sum of any two sides must be greater than the third side) before calculating the area 
+  (use Heron's formula: Area = sqrt(s*(s-a)*(s-b)*(s-c)) where s = (a+b+c)/2). */
+
+//Code:
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter values of 3 triangle sides:");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        if(a+b>=c && a+c>=b && b+c>=a){
+        double s = (double) (a+b+c)/2.0;
+        double formula = s*(s-a)*(s-b)*(s-c);
+        double area = Math.sqrt(formula);
+        System.out.println("Area of the traingle is: " + area);
+        }
+        else{
+            System.out.println("Sum of any 2 sides of a triangle must be larger than the third one.");
+        }
+    }
+}
+ 
+/* 1.8 Aim: Write a Java program that accepts two numbers as command-line arguments. Convert these arguments to appropriate numeric types (e.g., int or double), 
+perform a simple calculation (e.g., sum or product), and print the result to the console. */
+//Code:
+public class MyClass {
+    public static void main(String args[]) {
+        if (args.length < 2) {
+            System.out.println("Please enter two numbers as command-line arguments.");
+            return;
+        }
+        double num1 = Double.parseDouble(args[0]);
+        double num2 = Double.parseDouble(args[1]);
+        double sum = num1 + num2;
+        System.out.println("Sum:  “ + sum);
+    }
+}
+
