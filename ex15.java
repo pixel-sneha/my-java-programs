@@ -14,6 +14,9 @@ public class Main {
         /* similiarly to remove a element */
         set.remove(element);
         System.out.println(set);
+        /* To check if an element is in the set */
+        boolean isElement = set.contains(element);
+        System.out.println(isElement);
     }
     
     public static void main(String[] args) {
