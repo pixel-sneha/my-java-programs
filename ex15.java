@@ -86,3 +86,92 @@ public class Main {
         processSet(set);
     }
 }
+
+/*The method should perform different operations using concepts from Advanced Control Flow:
+Operations (using Switch Expression):
+"add": Add input to set and return success/failure message
+"remove": Remove input from set and return success/failure message
+"find": Search for input in set using label statements
+"count": Count elements of specific type using pattern matching*/
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+    public static String processHashSet(HashSet<Object> set, Object input, String operation) {
+        if (set == null) {
+            return "Invalid set";
+        }
+        if (operation == null) {
+            return "Invalid operation";
+        }
+        if (operation.equals("find") && input == null) {
+            return "Cannot find null";
+        }
+        
+        // Process using switch expression
+        return switch(operation) {
+            case "add" -> {
+                boolean added = set.add(input);
+                yield added ? "Added successfully" : "Element already exists";
+            }
+            
+            case "remove" -> {
+                boolean removed = set.remove(input);
+                yield removed ? "Removed successfully" : "Element not found";
+            }
+            
+            case "find" -> {
+                int index = 0;
+                search: {
+                    for (Object obj : set) {
+                        if (obj.equals(input)) {
+                            break search;
+                        }
+                        index++;
+                    }
+                    index = -1;
+                }
+                yield index >= 0 ? "Found at index: " + index : "Element not found";
+            }
+            
+            case "count" -> {
+                int count = 0;
+                for (Object obj : set) {
+                    if (obj instanceof Integer i) {
+                        count++;
+                    }
+                }
+                yield "Number of integers: " + count;
+            }
+            
+            default -> "Invalid operation";
+        };
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] items = scanner.nextLine().split(",");
+        HashSet<Object> set = new HashSet<>();
+        if (!items[0].equals("empty")) {
+            for (String item : items) {
+                // Try to parse as integer first
+                try {
+                    set.add(Integer.parseInt(item));
+                } catch (NumberFormatException e) {
+                    set.add(item);
+                }
+            }
+        }
+        
+        String inputStr = scanner.nextLine();
+        Object input;
+        try {
+            input = Integer.parseInt(inputStr);
+        } catch (NumberFormatException e) {
+            input = inputStr;
+        }
+        String operation = scanner.nextLine();
+        System.out.println(processHashSet(set, input, operation));
+    }
+}
