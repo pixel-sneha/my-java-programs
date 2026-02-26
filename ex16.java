@@ -11,6 +11,9 @@ public class Main {
         HashSet<Integer> unionSet = new HashSet<>(set1);
         unionSet.addAll(set2);
         System.out.println("Union: "+ unionSet);
+        //similiarly to keep only the same contents we can use
+        intersec.retainAll(set2);
+        System.out.println("Intersection: " +intersec);
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -22,3 +25,4 @@ public class Main {
         unionSets(set1, set2);
     }
 }
+
