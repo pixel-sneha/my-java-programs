@@ -26,3 +26,29 @@ public class Main {
     }
 }
 
+/*Create a method named setDifference that takes two HashSets of integers as input.
+The method should compute the difference (elements in the first set that are not in the second) and print the result */
+import java.util.HashSet;
+import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+public class Main {
+    public static void setDifference(HashSet<Integer> set1, HashSet<Integer> set2) {
+        HashSet<Integer> diff = new HashSet<>(set1);
+        diff.removeAll(set2);
+        System.out.println("Difference: " +diff);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String set1String = scanner.nextLine();
+        String set2String = scanner.nextLine();
+
+        Type setType = new TypeToken<HashSet<Integer>>(){}.getType();
+        HashSet<Integer> set1 = new Gson().fromJson(set1String, setType);
+        HashSet<Integer> set2 = new Gson().fromJson(set2String, setType);
+        setDifference(set1, set2);
+    }
+}
