@@ -12,7 +12,7 @@ public class Main {
         unionSet.addAll(set2);
         System.out.println("Union: "+ unionSet);
         //similiarly to keep only the same contents we can use
-        intersec.retainAll(set2);
+        intersec.retainAll(set2); //RETAIN to "keep" the elements of set1 that are in set2 also
         System.out.println("Intersection: " +intersec);
     }
     public static void main(String[] args) {
@@ -45,7 +45,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String set1String = scanner.nextLine();
         String set2String = scanner.nextLine();
-
         Type setType = new TypeToken<HashSet<Integer>>(){}.getType();
         HashSet<Integer> set1 = new Gson().fromJson(set1String, setType);
         HashSet<Integer> set2 = new Gson().fromJson(set2String, setType);
