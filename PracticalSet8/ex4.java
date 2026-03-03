@@ -51,7 +51,7 @@ public class FileManager {
             System.err.println("I/O error: " + ioe.getMessage());
         }
     }
-
+     //for copy command
     private static void copyFile(String sourcePathStr, String destPathStr) throws IOException {
         Path source = Paths.get(sourcePathStr);
         Path dest = Paths.get(destPathStr);
@@ -65,7 +65,7 @@ public class FileManager {
         System.out.println();
         printFileProperties(dest.toFile());
     }
-
+    //for delelte file command
     private static void deleteFile(String filePathStr) throws IOException {
         File file = new File(filePathStr);
         if (!file.exists()) {
@@ -83,7 +83,7 @@ public class FileManager {
             throw new IOException("Failed to delete file: " + file.getAbsolutePath());
         }
     }
-
+    //for rename command
     private static void renameFile(String sourcePathStr, String destPathStr) throws IOException {
         File source = new File(sourcePathStr);
         File dest = new File(destPathStr);
@@ -107,7 +107,6 @@ public class FileManager {
         System.out.println();
         printFileProperties(moved.toFile());
     }
-
     private static void printFileProperties(File file) {
         System.out.println("File properties:");
         System.out.println("  " + bold("File name") + ": " + file.getName());
