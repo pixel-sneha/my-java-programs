@@ -73,14 +73,38 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Read JSON string for the first set (e.g., [1,2,3])
         String set1String = scanner.nextLine();
-        // Read JSON string for the second set (e.g., [2,3,4])
         String set2String = scanner.nextLine();
-
         Type setType = new TypeToken<HashSet<Integer>>(){}.getType();
         HashSet<Integer> set1 = new Gson().fromJson(set1String, setType);
         HashSet<Integer> set2 = new Gson().fromJson(set2String, setType);
         symmetricDifference(set1, set2);
+    }
+}
+
+/*Create a method named checkSubsetSuperset that takes two HashSets of strings as input:
+setA and setB
+The method should: Check if setA is a subset of setB */
+import java.util.HashSet;
+import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
+public class Main {
+    public static void checkSubsetSuperset(HashSet<String> setA, HashSet<String> setB) {
+        boolean ch1 = setB.containsAll(setA);
+        System.out.println("setA is a subset of setB: " +ch1);
+        System.out.println("setB is a superset of setA: " +ch1);
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String setAString = scanner.nextLine();
+        String setBString = scanner.nextLine();
+        Type setType = new TypeToken<HashSet<String>>(){}.getType();
+        HashSet<String> setA = new Gson().fromJson(setAString, setType);
+        HashSet<String> setB = new Gson().fromJson(setBString, setType);
+        checkSubsetSuperset(setA, setB);
     }
 }
