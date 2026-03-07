@@ -7,7 +7,8 @@ import java.io.IOException;
 public class FileStats {
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.err.println("Usage: java FileStats <filename>");
+            System.err.println("Usage: java FileStats <filename>"); //use this syntax
+            //here file name is the name of file we want to check word count, line count etc of
             System.exit(1);
         }
         File file = new File(args[0]);
