@@ -25,7 +25,8 @@ public class Main {
 /*Create a method named findNumber that takes three arguments:
 A 2D array of integers (grid), An integer (target) to find
 A boolean that determines if the search should stop after finding the first occurrence
-use a labeled loop to search for the target number and print each position where it's found. If breakEarly is true, it should stop after finding the first occurrence. Each found element should be printed in the format: Found at: rowIndex,colIndex*/
+use a labeled loop to search for the target number and print each position where it's found. 
+If breakEarly is true, it should stop after finding the first occurrence.*/
 import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
