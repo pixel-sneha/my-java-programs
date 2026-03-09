@@ -62,3 +62,27 @@ public class Main {
         findNumber(grid, target, breakEarly);
     }
 }
+
+
+/*Create a method named getDayType that takes two arguments:
+An integer (day) representing a day of the week (1-7)
+A boolean (abbreviated) that determines the return format*/
+
+import java.util.Scanner;
+public class Main {
+    public static String getDayType(int day, boolean abbreviated) {
+        return switch(day){
+            case 1,2,3,4,5 -> abbreviated ? "WKD" : "WORKDAY";
+            case 6,7 -> abbreviated ? "WKND" : "WEEKEND";
+            default -> abbreviated ? "INV" : "INVALID";
+        };
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int day = Integer.parseInt(scanner.nextLine());
+        boolean abbreviated = Boolean.parseBoolean(scanner.nextLine());
+        
+        System.out.println(getDayType(day, abbreviated));
+    }
+}
