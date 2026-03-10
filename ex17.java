@@ -86,3 +86,32 @@ public class Main {
         System.out.println(getDayType(day, abbreviated));
     }
 }
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static String processValue(Object value) {
+        // TODO: Use pattern matching with instanceof to process the value
+        // If it's an Integer: return "Number: " + (value * 2)
+        // If it's a String: return "Text: " + value.toUpperCase()
+        // If it's a Boolean: return "Boolean: " + (!value)
+        // For any other type: return "Unknown"
+        
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String type = scanner.nextLine();
+        String inputValue = scanner.nextLine();
+        
+        Object value = switch(type) {
+            case "Integer" -> Integer.parseInt(inputValue);
+            case "String" -> inputValue;
+            case "Boolean" -> Boolean.parseBoolean(inputValue);
+            default -> inputValue;
+        };
+        
+        System.out.println(processValue(value));
+    }
+}
