@@ -47,7 +47,6 @@ public class Main {
                 }
             }
         }
-        
     }
     
     public static void main(String[] args) {
@@ -82,7 +81,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int day = Integer.parseInt(scanner.nextLine());
         boolean abbreviated = Boolean.parseBoolean(scanner.nextLine());
-        
         System.out.println(getDayType(day, abbreviated));
     }
 }
